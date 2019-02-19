@@ -30,7 +30,8 @@ const routes: Route[] = [
   { path: 'edit-member/:memberId', component: MemberProfileCreateComponent },
   { path: 'members', component: MemberProfileInfoComponent },
   { path: 'create-trainer', component: TrainerProfileCreateComponent },
-  { path: 'trainers', component: TrainerProfileInfoComponent }
+  { path: 'trainers', component: TrainerProfileInfoComponent },
+  { path: 'edit-trainer/:trainerId', component: TrainerProfileCreateComponent}
 ];
 
 @NgModule({

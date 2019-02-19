@@ -8,7 +8,7 @@ const TrainerProfile = require('./models/trainer-profile');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://USERNAME:PASSWORD@cluster0-7fyxu.mongodb.net/nodeAngular', { useNewUrlParser: true, useCreateIndex: true, })
+mongoose.connect('mongodb+srv://Nate:CdyQIGomtE6TmmR5@cluster0-7fyxu.mongodb.net/nodeAngular', { useNewUrlParser: true, useCreateIndex: true, })
   .then(() => {
     console.log('SERVER MESSAGE: Connected to database');
   })
@@ -173,7 +173,7 @@ app.put('/api/members/:_id', (req, res, next) => {
   })
 });
 
-// GET all trainer
+// GET all trainers
 app.get('/api/trainers', (req, res, next) => {
   TrainerProfile.find()
     .then(documents => {
@@ -198,7 +198,7 @@ app.get('/api/trainers/:_id', (req, res, next) => {
           email: trainer.email,
           firstName: trainer.email,
           lastName: trainer.lastName,
-          age: triner.age,
+          age: trainer.age,
           gender: trainer.gender,
           bio: trainer.bio,
           message: 'Here is the trainer you requested'

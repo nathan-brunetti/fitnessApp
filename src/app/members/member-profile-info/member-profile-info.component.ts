@@ -23,7 +23,7 @@ export class MemberProfileInfoComponent implements OnInit, OnDestroy {
   private membersSub: Subscription;
 
   // Dependency Injections
-  constructor(public membersService: MembersService, private router: Router,) {}
+  constructor( public membersService: MembersService, private router: Router ) {}
 
   ngOnInit() {
     this.membersService.getMembers();

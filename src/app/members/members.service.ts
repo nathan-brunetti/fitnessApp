@@ -23,7 +23,13 @@ export class MembersService {
 
   getMember(_id: string) {
     return this.http
-      .get<{_id: string, email: string, firstName: string, lastName: string, age: number, gender: string, bio: string }>('http://localhost:3000/api/members/' + _id);
+      .get< {_id: string,
+        email: string,
+        firstName: string,
+        lastName: string,
+        age: number,
+        gender: string,
+        bio: string }>('http://localhost:3000/api/members/' + _id);
   }
 
   getMemberUpdateListener() {
@@ -71,9 +77,9 @@ export class MembersService {
   deleteMember(memberId: string) {
     this.http.delete('http://localhost:3000/api/members/' + memberId)
       .subscribe(() => {
-        const updatedMembers = this.members.filter(member => member._id != memberId);
+        const updatedMembers = this.members.filter(member => member._id !== memberId);
         this.members = updatedMembers;
         this.membersUpdated.next([...this.members]);
-      })
+      });
   }
 }

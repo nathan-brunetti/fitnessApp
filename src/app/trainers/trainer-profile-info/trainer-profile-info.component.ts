@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { TrainerProfile } from '../trainers.model';
 import { TrainersService } from '../trainers.service';
@@ -22,7 +23,7 @@ export class TrainerProfileInfoComponent implements OnInit, OnDestroy {
   private trainersSub: Subscription;
 
   // Dependency Injections
-  constructor(public trainersService: TrainersService) {}
+  constructor( public trainersService: TrainersService, private router: Router ) {}
 
   ngOnInit() {
     this.trainersService.getTrainers();
@@ -30,6 +31,10 @@ export class TrainerProfileInfoComponent implements OnInit, OnDestroy {
       .subscribe((trainers: TrainerProfile[]) => {
         this.trainers = trainers;
       });
+  }
+
+  onDeleteTrainer(trainerId: string) {
+    this.trainersService.deleteTrainer(trainerId);
   }
 
   ngOnDestroy() {

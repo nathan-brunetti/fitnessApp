@@ -17,12 +17,20 @@ export class TrainersService {
       .subscribe((trainerData) => {
         this.trainers = trainerData.trainers;
         this.trainersUpdated.next([...this.trainers]);
-      })
+      });
   }
 
   getTrainer(_id: string) {
     return this.http
-      .get<{ _id: string, email: string, firstName: string, lastName: string, age: number, gender: string, bio: string }>('http://localhost:3000/api/trainers/' + _id);
+      .get<{
+        _id: string,
+        email: string,
+        firstName: string,
+        lastName: string,
+        age: number,
+        gender: string,
+        bio: string
+      }>('http://localhost:3000/api/trainers/' + _id);
   }
 
   getTrainerUpdateListener() {
@@ -50,19 +58,27 @@ export class TrainersService {
   }
 
   updateTrainer(_id: string, email: string, firstName: string, lastName: string, age: number, gender: string, bio: string) {
-    const trainer: TrainerProfile = { _id: _id, email: email, firstName: firstName, lastName: lastName, age: age, gender: gender, bio: bio };
+    const trainer: TrainerProfile = {
+      _id: _id,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      age: age,
+      gender: gender,
+      bio: bio
+    };
     // Backend request to send this request
-    this.http.put('http://localhost:3000/api/members/' + _id, trainer)
+    this.http.put('http://localhost:3000/api/trainers' + _id, trainer)
       .subscribe(response => {
-        // clone member array and store it in a constant
+        // clone trainer array and store it in a constant
         const updatedTrainers = [...this.trainers];
         // search for the old post version by its ID
         const oldTrainerIndex = updatedTrainers.findIndex(t => t._id === trainer._id);
-        // updated members for that old member index equals the new member
+        // updated trainers for that old trainer index equals the new trainer
         updatedTrainers[oldTrainerIndex] = trainer;
-        // asign updatedMembers to members
+        // asign updatedMembers to trainers
         this.trainers = updatedTrainers;
-        // tell my app about it by sending a copy of the updated members
+        // tell my app about it by sending a copy of the updated trainers
         this.trainersUpdated.next([...this.trainers]);
       });
   }
@@ -70,9 +86,9 @@ export class TrainersService {
   deleteTrainer(trainerId: string) {
     this.http.delete('http://localhost:3000/api/trainers/' + trainerId)
       .subscribe(() => {
-        const updatedTrainers = this.trainers.filter(trainer => trainer._id != trainerId);
+        const updatedTrainers = this.trainers.filter(trainer => trainer._id !== trainerId);
         this.trainers = updatedTrainers;
         this.trainersUpdated.next([...this.trainers]);
-      })
+      });
   }
 }
