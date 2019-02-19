@@ -1,0 +1,14 @@
+.navbar-nav {
+  width: 100%;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.nav-item {
+  display: inline;
+  padding-left: 20px;
+}
+
+a {
+  text-decoration: none;
+}

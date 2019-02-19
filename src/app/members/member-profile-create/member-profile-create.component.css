@@ -1,0 +1,21 @@
+mat-card {
+  width: 65%;
+  margin: auto;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-radio-button {
+  margin-right: 16px;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+button {
+  margin-top: 1rem;
+}

@@ -1,0 +1,18 @@
+<div *ngIf="trainers.length > 0">
+  <mat-card *ngFor="let trainer of trainers">
+    <mat-card-header>
+      <div mat-card-avatar class="trainer-profile-image">
+      </div>
+      <mat-card-title>{{ trainer.firstName }} {{ trainer.lastName }}</mat-card-title>
+      <mat-card-subtitle><b>Age:</b> {{ trainer.age }} | <b>Gender:</b> {{ trainer.gender }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ trainer.bio }}</p>
+    </mat-card-content>
+    <mat-action-row>
+      <button mat-flat-button color="primary" [routerLink]="['edit-trainer', trainer._id]">EDIT</button>
+      <button mat-flat-button color="warn">DELETE</button>
+    </mat-action-row>
+  </mat-card>
+</div>
+<p class="mat-body-1 info-text" *ngIf="trainers.length <= 0">You don't have a trainer profile created yet!!!</p>

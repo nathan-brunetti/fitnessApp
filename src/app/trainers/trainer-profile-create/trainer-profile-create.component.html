@@ -1,0 +1,62 @@
+<mat-card>
+  <form (submit)="onSaveTrainer(trainerForm)" #trainerForm="ngForm">
+    <h2>Trainer Section</h2>
+    <mat-form-field>
+      <input matInput placeholder="Email" type="email" name="email" ngModel required #email="ngModel">
+      <mat-error *ngIf="email.invalid">Please enter a valid email</mat-error>
+    </mat-form-field>
+    <table cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="First Name" type="text" name="firstName" ngModel required #firstName="ngModel">
+            <mat-error *ngIf="firstName.invalid">Please enter your first name</mat-error>
+          </mat-form-field>
+        </td>
+        <td style="padding-left:10px;">
+          <mat-form-field>
+            <input matInput placeholder="Last Name" type="text" name="lastName" ngModel required #lastName="ngModel">
+            <mat-error *ngIf="lastName.invalid">Please enter your last name</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <label>Age: {{ age.value }}</label>
+    <mat-slider
+      required
+      name="age"
+      ngModel
+      #age="ngModel"
+      min="18"
+      max="100"
+      step="1"
+      value="1.5"
+      thumbLabel>
+    </mat-slider>
+    <!-- <mat-form-field>
+      <input matInput placeholder="Age (25)" type="number" name="age" ngModel maxlength="3" required #age="ngModel">
+      <mat-error *ngIf="age.invalid">Please enter your age as a number</mat-error>
+    </mat-form-field> -->
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Gender (M/F)"
+        type="text"
+        name="gender"
+        ngModel
+        maxlength="1"
+        required
+        #gender="ngModel"
+        oninput="this.value = this.value.toUpperCase()">
+      <mat-error *ngIf="gender.invalid">Please enter your gender (M or F)</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Enter some info about youself" rows="6" name="bio" maxlength="50" ngModel required #bio="ngModel"></textarea>
+      <mat-error *ngIf="bio.invalid">Please enter some information about yourself</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Create Trainer</button>
+  </form>
+</mat-card>

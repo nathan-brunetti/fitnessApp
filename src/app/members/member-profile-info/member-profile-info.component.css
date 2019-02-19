@@ -1,0 +1,26 @@
+mat-card {
+  width: 65%;
+  margin: 1.5rem auto;
+}
+
+mat-card-avatar {
+  max-width: 50px;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+.member-profile-image {
+  border-radius: 50%;
+  background-color: grey;
+  background-size: cover;
+}
+
+.member-age {
+  float: right;
+}
+
+.info-text {
+  text-align: center;
+}
