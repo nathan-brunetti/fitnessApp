@@ -67,12 +67,12 @@ export class TrainersService {
       });
   }
 
-  deleteTrainer(trainerId: string) {
-    this.http.delete('http://localhost:3000/api/trainers/' + trainerId)
-      .subscribe(() => {
-        const updatedTrainers = this.trainers.filter(trainer => trainer._id != trainerId);
-        this.trainers = updatedTrainers;
-        this.trainersUpdated.next([...this.trainers]);
-      })
-  }
+  // deleteTrainer(trainerId: string) {
+  //   this.http.delete('http://localhost:3000/api/trainers/' + trainerId)
+  //     .subscribe(() => {
+  //       const updatedTrainers = this.trainers.filter(trainer => trainer._id != trainerId);
+  //       this.trainers = updatedTrainers;
+  //       this.trainersUpdated.next([...this.trainers]);
+  //     })
+  // }
 }
