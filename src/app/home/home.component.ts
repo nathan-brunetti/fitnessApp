@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  template: `
-    <h1>Welcome Home!</h1>
-  `,
+  selector: 'app-home-page',
+  templateUrl: './home.component.html',
   styles: [`
     h1 {text-align: center;}
+
+    .hero {width: 100%;}
   `]
 })
 
