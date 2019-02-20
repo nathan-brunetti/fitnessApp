@@ -1,33 +1,31 @@
 <mat-card>
-  <form (submit)="onSaveMember(memberForm)" #memberForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSaveMember()" *ngIf="!isLoading">
     <h2 *ngIf="member?._id">Update Member Information</h2>
     <h2 *ngIf="!member?._id">Create Member</h2>
     <mat-form-field>
-      <input matInput placeholder="Email" type="email" name="email" [ngModel]="member?.email" required #email="ngModel">
-      <mat-error *ngIf="email.invalid">Please enter a valid email</mat-error>
+      <input matInput placeholder="Email" type="email" formControlName="email">
+      <mat-error *ngIf="form.get('email').invalid">Please enter a valid email</mat-error>
     </mat-form-field>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr>
         <td>
           <mat-form-field>
-            <input matInput placeholder="First Name" type="text" name="firstName" [ngModel]="member?.firstName" required #firstName="ngModel">
-            <mat-error *ngIf="firstName.invalid">Please enter your first name</mat-error>
+            <input matInput placeholder="First Name" type="text" formControlName="firstName">
+            <mat-error *ngIf="form.get('firstName').invalid">Please enter your first name</mat-error>
           </mat-form-field>
         </td>
         <td style="padding-left:10px;">
           <mat-form-field>
-            <input matInput placeholder="Last Name" type="text" name="lastName" [ngModel]="member?.lastName" required #lastName="ngModel">
-            <mat-error *ngIf="lastName.invalid">Please enter your last name</mat-error>
+            <input matInput placeholder="Last Name" type="text" formControlName="lastName">
+            <mat-error *ngIf="form.get('lastName').invalid">Please enter your last name</mat-error>
           </mat-form-field>
         </td>
       </tr>
     </table>
-    <label>Age: {{ age.value }}</label>
+    <label>Age: {{ form.get('age').value }}</label>
     <mat-slider
-      required
-      name="age"
-      [ngModel]="member?.age"
-      #age="ngModel"
+      formControlName="age"
       min="18"
       max="100"
       step="1"
@@ -43,21 +41,25 @@
         matInput
         placeholder="Gender (M/F)"
         type="text"
-        name="gender"
-        [ngModel]="member?.gender"
+        formControlName="gender"
         maxlength="1"
-        required
-        #gender="ngModel"
         oninput="this.value = this.value.toUpperCase()">
-      <mat-error *ngIf="gender.invalid">Please enter your gender (M or F)</mat-error>
+      <mat-error *ngIf="form.get('gender').invalid">Please enter your gender (M or F)</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Enter some info about youself" rows="6" name="bio" maxlength="50" [ngModel]="member?.bio" required #bio="ngModel"></textarea>
-      <mat-error *ngIf="bio.invalid">Please enter some information about yourself</mat-error>
+      <textarea matInput placeholder="Enter some info about youself" rows="6" formControlName="bio" maxlength="50"></textarea>
+      <mat-error *ngIf="form.get('bio').invalid">Please enter some information about yourself</mat-error>
     </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">SELECT IMAGE</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imageURL !== '' && imageURL">
+      <img [src]="imageURL" [alt]="form.value.title">
+    </div>
     <button
       mat-raised-button
       color="accent"
-      type="submit">Save Member</button>
+      type="submit">SAVE MEMBER</button>
   </form>
 </mat-card>

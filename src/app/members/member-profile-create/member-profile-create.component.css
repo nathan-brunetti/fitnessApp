@@ -1,3 +1,7 @@
+mat-spinner {
+  margin: auto;
+}
+
 mat-card {
   width: 65%;
   margin: auto;
@@ -18,4 +22,20 @@ mat-slider {
 
 button {
   margin-top: 1rem;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+  border-radius: 50%;
+  max-width: 5rem;
+  max-height: 5rem;
 }

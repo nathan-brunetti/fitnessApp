@@ -1,4 +1,5 @@
-<div *ngIf="members.length > 0">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="members.length > 0 && !isLoading">
   <mat-card *ngFor="let member of members">
     <mat-card-header>
       <div mat-card-avatar class="member-profile-image">
@@ -15,4 +16,4 @@
     </mat-action-row>
   </mat-card>
 </div>
-<p class="mat-body-1 info-text" *ngIf="members.length <= 0">You don't have a member profile created yet!!!</p>
+<p class="mat-body-1 info-text" *ngIf="members.length <= 0 && !isLoading">You don't have a member profile created yet!!!</p>

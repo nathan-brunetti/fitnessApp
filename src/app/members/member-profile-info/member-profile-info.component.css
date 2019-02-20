@@ -7,6 +7,10 @@ mat-card-avatar {
   max-width: 50px;
 }
 
+mat-spinner {
+  margin: auto;
+}
+
 button {
   margin-right: 1rem;
 }

@@ -5,13 +5,14 @@ import { map } from 'rxjs/operators';
 
 import { MemberProfile } from './member.model';
 import { strictEqual } from 'assert';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class MembersService {
   private members: MemberProfile[] = [];
   private membersUpdated = new Subject<MemberProfile[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getMembers() {
     this.http.get<{message: string, members: any}>('http://localhost:3000/api/members')
@@ -53,6 +54,7 @@ export class MembersService {
         member._id = _id;
         this.members.push(member);
         this.membersUpdated.next([...this.members]);
+        this.router.navigate(['/']);
       });
   }
 
@@ -71,6 +73,7 @@ export class MembersService {
         this.members = updatedMembers;
         // tell my app about it by sending a copy of the updated members
         this.membersUpdated.next([...this.members]);
+        this.router.navigate(['/']);
       });
   }
 

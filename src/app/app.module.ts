@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Route } from '@angular/router';
 import {
@@ -11,7 +11,8 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatRadioModule,
-  MatSliderModule
+  MatSliderModule,
+  MatProgressSpinnerModule
   // MatRadioButton,
   // MatRadioGroup
 } from '@angular/material';
@@ -46,6 +47,7 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -55,6 +57,7 @@ const routes: Route[] = [
     MatExpansionModule,
     MatRadioModule,
     MatSliderModule,
+    MatProgressSpinnerModule,
     // MatRadioButton,
     // MatRadioGroup,
     HttpClientModule,

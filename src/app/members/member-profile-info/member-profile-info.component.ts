@@ -20,15 +20,18 @@ export class MemberProfileInfoComponent implements OnInit, OnDestroy {
   //   }
   // ];
   members: MemberProfile[] = [];
+  isLoading = false;
   private membersSub: Subscription;
 
   // Dependency Injections
   constructor( public membersService: MembersService, private router: Router ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.membersService.getMembers();
     this.membersSub = this.membersService.getMemberUpdateListener()
       .subscribe((members: MemberProfile[]) => {
+        this.isLoading = false;
         this.members = members;
       });
   }

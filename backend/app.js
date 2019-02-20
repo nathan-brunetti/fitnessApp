@@ -8,7 +8,7 @@ const TrainerProfile = require('./models/trainer-profile');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://USERNAME:PASSWORD@cluster0-7fyxu.mongodb.net/nodeAngular', { useNewUrlParser: true, useCreateIndex: true, })
+mongoose.connect('mongodb+srv://Nate:CdyQIGomtE6TmmR5@cluster0-7fyxu.mongodb.net/nodeAngular', { useNewUrlParser: true, useCreateIndex: true, })
   .then(() => {
     console.log('SERVER MESSAGE: Connected to database');
   })
